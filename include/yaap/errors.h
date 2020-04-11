@@ -1,12 +1,14 @@
 #ifndef YAAP_ERRORS_H
 #define YAAP_ERRORS_H
 
+#include <exception>
+
 namespace yaap {
     typedef std::exception Error;
 
     class UnhandledArgumentsError : Error {
     public:
-        explicit UnhandledArgumentsError(const arglist& args) {
+        explicit UnhandledArgumentsError(const string_vector& args) {
             _message = "unknown args: [";
             for (const auto& arg : args) {
                 if (arg != args[0])

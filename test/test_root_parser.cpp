@@ -24,12 +24,21 @@ std::function<void()> test(const std::string& arg1, bool verbose, int port) {
 TEST_CASE("single flag", "[yaap:root parser]") {
     auto cmd = yaap::Command("test");
 
-    auto verbose_flag = yaap::Flag("verbose", parsed_args.verbose);
-    cmd.add_flag(verbose_flag);
+    cmd.add_flag("v|verbose", parsed_args.verbose);
 
     SECTION("no args provided") {
         cmd.run = test("", false, 0);
         cmd.execute({});
+    }
+
+    SECTION("long flag") {
+        cmd.run = test("", true, 0);
+        cmd.execute({"--verbose"});
+    }
+
+    SECTION("short flag") {
+        cmd.run = test("", true, 0);
+        cmd.execute({"-v"});
     }
 
     SECTION("single unknown arg") {

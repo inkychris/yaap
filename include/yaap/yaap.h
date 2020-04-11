@@ -1,33 +1,34 @@
 #ifndef YAAP_YAAP_H
 #define YAAP_YAAP_H
 
-#include <algorithm>
-#include <map>
 #include <string>
-#include <utility>
 #include <vector>
 #include <functional>
-#include <exception>
 
 namespace yaap {
-    typedef std::vector<std::string> arglist;
+    typedef std::vector<std::string> string_vector;
     typedef std::function<void()> run_function;
 
 
     class Argument {
     public:
-        explicit Argument(std::string id) : _id(std::move(id)) {};
-        virtual arglist process(arglist args) = 0;
+        explicit Argument(const std::string& id, std::string help_message);
+        virtual string_vector process(string_vector args) = 0;
+
     protected:
-        std::string _id;
+        string_vector _long_ids;
+        string_vector _short_ids;
+    private:
+        std::string _help_message;
     };
 
 
     class Flag : public Argument {
     public:
-        Flag(std::string id, bool& target);
+        Flag(const std::string& id, bool& target);
+        Flag(const std::string& id, bool& target, std::string help_message);
 
-        arglist process(arglist args) override;
+        string_vector process(string_vector args) override;
 
     private:
         bool* _target;
@@ -38,12 +39,12 @@ namespace yaap {
     public:
         explicit Command(std::string id);
 
-        void execute(arglist);
+        void execute(string_vector);
 
-        void add_flag(Flag&);
+        void add_flag(const std::string& id, bool& target);
+        void add_flag(const std::string& id, bool& target, std::string help_message);
 
         run_function run;
-        std::string help_message;
 
     private:
         std::string _id;
