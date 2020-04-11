@@ -1,4 +1,5 @@
 #include <sstream>
+#include <utility>
 #include "yaap/yaap.h"
 
 yaap::Argument::Argument(const std::string& id, std::string help_message) :

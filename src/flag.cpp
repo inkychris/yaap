@@ -1,3 +1,4 @@
+#include <utility>
 #include "yaap/yaap.h"
 
 yaap::Flag::Flag(const std::string& id, bool& target) :
@@ -23,7 +24,6 @@ yaap::string_vector yaap::Flag::process(string_vector args) {
                 args.erase(std::remove(args.begin(), args.end(), arg), args.end());
                 return args;
             }
-
         }
     }
     return args;
