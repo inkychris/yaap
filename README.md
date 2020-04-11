@@ -22,3 +22,4 @@ provide the following features:
   except (optionally) the last one
 - customisation of named argument prefix character
   (change or add additional)
+- mutually inclusive/exclusive arguments
