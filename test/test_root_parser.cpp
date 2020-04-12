@@ -1,6 +1,4 @@
-#define CATCH_CONFIG_MAIN
 #include <functional>
-
 #include <catch2/catch.hpp>
 #include "yaap/yaap.h"
 #include "yaap/errors.h"
