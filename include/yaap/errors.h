@@ -6,7 +6,7 @@
 namespace yaap {
     typedef std::exception Error;
 
-    class UnhandledArgumentsError : Error {
+    class UnhandledArgumentsError : public Error {
     public:
         explicit UnhandledArgumentsError(const string_vector& args) {
             _message = "unknown args: [";
