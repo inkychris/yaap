@@ -1,6 +1,6 @@
 #include <functional>
 #include <catch2/catch.hpp>
-#include "yaap/yaap.h"
+#include "yaap/command.h"
 #include "yaap/errors.h"
 
 struct Args {

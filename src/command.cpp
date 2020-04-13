@@ -1,6 +1,6 @@
 #include <memory>
 #include <utility>
-#include "yaap/yaap.h"
+#include "yaap/command.h"
 #include "yaap/errors.h"
 
 yaap::Command::Command(std::string id) : _id(std::move(id)) {};
