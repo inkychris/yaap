@@ -1,14 +1,5 @@
 #include <algorithm>
-#include <utility>
 #include "yaap/yaap.h"
-
-yaap::Flag::Flag(const std::string& id, bool& target) :
-    Argument(id, ""),
-    _target(&target) {}
-
-yaap::Flag::Flag(const std::string& id, bool& target, std::string help_message) :
-    Argument(id, std::move(help_message)),
-    _target(&target) {}
 
 bool string_startswith(const std::string& string, const std::string& prefix) {
     if (string.size() < prefix.size())

@@ -1,5 +1,4 @@
 add_library(yaap
-    argument.cpp
     command.cpp
     flag.cpp
     ../include/yaap/yaap.h
